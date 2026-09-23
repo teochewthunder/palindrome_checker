@@ -4,7 +4,20 @@
 		<title>Palindrome Checker</title>
 
 		<style>
-			
+			body
+			{
+				font-size: 16px;
+				font-family: Verdana;
+			}
+
+			#txtString
+			{
+				display: inline-block;
+				width: 100em;
+				height: 1.5em;
+				font-size: 2em;
+				font-face: typeFace;
+			}
 		</style>
 
 		<script>
@@ -15,6 +28,13 @@
 	<body>
 		<input id="txtString" oninput="" placeholder="Enter text, e.g, Canoe" />
 
+		<div id="pnlResult"></div>
 		<div id="pnlVerification"></div>
+
+		<div id="pnlOptions">
+				<label><input type="checkbox" id="cbPunctuation">Remove Punctuation</label>
+				<label><input type="checkbox" id="cbSpaces">Remove Spaces</label>	
+		</div>
+
 	</body>
 </html>
