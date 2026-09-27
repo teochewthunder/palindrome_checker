@@ -16,17 +16,72 @@
 				width: 100em;
 				height: 1.5em;
 				font-size: 2em;
-				font-face: typeFace;
+				font-face: "Courier New", monospace;
 			}
 		</style>
 
 		<script>
-			
+			function checkPalindrome(str)
+			{
+				let processed = str;
+				let cbSpaces = document.getElementById("cbSpaces");
+				let cbPunctuation = document.getElementById("cbPunctuation");
+
+				if (cbSpaces.checked) processed = processed.replaceAll(" ", "");
+				if (cbPunctuation.checked) processed = processed.replaceAll(" ", "");
+
+				if (processed.length <= 1)
+				{
+
+				}
+				else
+				{
+					if (sPalindrom(processed))
+					{
+
+					}
+					else
+					{
+						
+					}
+				}
+
+				return;
+			}
+
+			function isPalindrom(str)
+			{
+				let arr = [...str];
+				return (arr.reverse().join("") == str);
+			}
+
+			function setResult(str)
+			{
+				document.getElementById("pnlResult").innerHTML = str;
+
+				return;
+			}
+
+			function setVerification(str, colorCode = "default")
+			{
+				let colors = 
+				[
+					"default": "black",
+					"success": "green",
+					"failure": "red",
+					"pending": "yellow"
+				];
+
+				let pnlVerification = document.getElementById("pnlVerification");
+				pnlVerification.style.color = colors[colorCode];
+
+				return;
+			}
 		</script>
 	</head>
 
 	<body>
-		<input id="txtString" oninput="" placeholder="Enter text, e.g, Canoe" />
+		<input id="txtString" oninput="checkPalindrome(this.value);" placeholder="Enter text, e.g, Canoe" />
 
 		<div id="pnlResult"></div>
 		<div id="pnlVerification"></div>
