@@ -21,35 +21,40 @@
 		</style>
 
 		<script>
-			function checkPalindrome(str)
+			function checkPalindrome()
 			{
-				let processed = str;
-				let cbSpaces = document.getElementById("cbSpaces");
-				let cbPunctuation = document.getElementById("cbPunctuation");
+				let txtString = document.getElementById("txtString");
+				let processed = txtString.value.replace(/[^a-zA-Z]/g, "");
+				let cbIgnoreCase = document.getElementById("cbIgnoreCase");
 
-				if (cbSpaces.checked) processed = processed.replaceAll(" ", "");
-				if (cbPunctuation.checked) processed = processed.replaceAll(" ", "");
+				if (cbIgnoreCase.checked) processed = processed.toLowerCase();
+				setResult(processed);
 
 				if (processed.length <= 1)
 				{
-
+					setVerification("Inconclusive...", "pending");
 				}
 				else
 				{
-					if (sPalindrom(processed))
+					if (isPalindrome(processed))
 					{
-
+						setVerification("This is a Palindrome!", "success");
 					}
 					else
 					{
-						
+						setVerification("This is not a Palindrome!", "failure");
 					}
+				}
+
+				if (processed.length == 0)
+				{
+					setVerification("Enter some text above", "default");
 				}
 
 				return;
 			}
 
-			function isPalindrom(str)
+			function isPalindrome(str)
 			{
 				let arr = [...str];
 				return (arr.reverse().join("") == str);
@@ -66,14 +71,15 @@
 			{
 				let colors = 
 				[
-					"default": "black",
-					"success": "green",
-					"failure": "red",
-					"pending": "yellow"
+					{ "default": "black" },
+					{ "success": "green"},
+					{ "failure": "red" },
+					{ "pending": "yellow" }
 				];
 
 				let pnlVerification = document.getElementById("pnlVerification");
 				pnlVerification.style.color = colors[colorCode];
+				pnlVerification.innerHTML = str;
 
 				return;
 			}
@@ -81,14 +87,13 @@
 	</head>
 
 	<body>
-		<input id="txtString" oninput="checkPalindrome(this.value);" placeholder="Enter text, e.g, Canoe" />
+		<input id="txtString" oninput="checkPalindrome();" placeholder="Enter text, e.g, Kayak" />
 
 		<div id="pnlResult"></div>
 		<div id="pnlVerification"></div>
 
 		<div id="pnlOptions">
-				<label><input type="checkbox" id="cbPunctuation">Remove Punctuation</label>
-				<label><input type="checkbox" id="cbSpaces">Remove Spaces</label>	
+				<label><input type="checkbox" id="cbIgnoreCase" onclick="checkPalindrome();">Ignore Case</label>	
 		</div>
 
 	</body>
