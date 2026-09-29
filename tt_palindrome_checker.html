@@ -10,6 +10,13 @@
 				font-family: Verdana;
 			}
 
+			#pnlString
+			{
+				width: 800px;
+				margin: 0 auto 0 auto;
+				text-align: center;
+			}
+
 			#txtString
 			{
 				display: inline-block;
@@ -17,7 +24,6 @@
 				height: 1.5em;
 				font-size: 2em;
 				font-face: "Courier New", monospace;
-				margin: 0 auto 0 auto;
 				text-align: center;
 			}
 
@@ -46,6 +52,13 @@
 				width: 500px;
 				margin: 0 auto 0 auto;
 				text-align: left;
+			}
+
+			#pnlOptions
+			{
+				width: 800px;
+				margin: 0 auto 0 auto;
+				text-align: center;
 			}
 
 			label
@@ -104,12 +117,12 @@
 			function setVerification(str, colorCode = "default")
 			{
 				let colors = 
-				[
-					{ "default": "black" },
-					{ "success": "green"},
-					{ "failure": "red" },
-					{ "pending": "yellow" }
-				];
+				{
+					"default": "black",
+					"success": "green",
+					"failure": "red",
+					"pending": "yellow"
+				};
 
 				let pnlVerification = document.getElementById("pnlVerification");
 				pnlVerification.style.color = colors[colorCode];
@@ -121,13 +134,15 @@
 	</head>
 
 	<body>
-		<input id="txtString" oninput="checkPalindrome();" placeholder="Enter text, e.g, Kayak" />
+		<div id="pnlString">
+			<input id="txtString" oninput="checkPalindrome();" placeholder="Enter text, e.g, Kayak" />
+		</div>
 
 		<div id="pnlResult"></div>
 		<div id="pnlVerification"></div>
 
 		<div id="pnlOptions">
-				<label><input type="checkbox" id="cbIgnoreCase" onclick="checkPalindrome();">Ignore Case</label>	
+			<label><input type="checkbox" id="cbIgnoreCase" onclick="checkPalindrome();">Ignore Case</label>	
 		</div>
 
 	</body>
