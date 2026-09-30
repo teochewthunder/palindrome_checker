@@ -25,6 +25,7 @@
 				font-size: 2em;
 				font-face: "Courier New", monospace;
 				text-align: center;
+				border-radius: 10px;
 			}
 
 			#pnlResult
@@ -38,20 +39,32 @@
 				font-weight: bold;
 			}
 
-			#pnlVerification
+			#pnlOutput
 			{
-				width: 500px;
-				font-size: 2.5em;
-				font-face: Georgia;
+				width: 800px;
+				height: auto;
 				margin: 0 auto 0 auto;
 				text-align: center;
+				border: 3px dotted rgb(100, 100, 100);
+				border-radius: 30px;
+			}
+
+			#pnlResult
+			{
+				width: 100%;
+				height: 1.5em;
+				font-size: 2.5em;
+				font-face: Georgia;
+				text-align: center;
+				color: rgb(100, 100, 100);
 			}
 
 			#pnlVerification
 			{
-				width: 500px;
+				width: 100%;
+				height: 1.5em;
 				margin: 0 auto 0 auto;
-				text-align: left;
+				text-align: center;
 			}
 
 			#pnlOptions
@@ -95,6 +108,7 @@
 
 				if (processed.length == 0)
 				{
+					setResult("(no text yet)");
 					setVerification("Enter some text above", "default");
 				}
 
@@ -138,12 +152,13 @@
 			<input id="txtString" oninput="checkPalindrome();" placeholder="Enter text, e.g, Kayak" />
 		</div>
 
-		<div id="pnlResult"></div>
-		<div id="pnlVerification"></div>
-
 		<div id="pnlOptions">
 			<label><input type="checkbox" id="cbIgnoreCase" onclick="checkPalindrome();">Ignore Case</label>	
 		</div>
 
+		<div id="pnlOutput">
+			<div id="pnlResult">(no text yet)</div>
+			<div id="pnlVerification">Enter some text above</div>			
+		</div>
 	</body>
 </html>
